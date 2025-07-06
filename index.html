@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WP Music Player 使用示例</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 16px 0;
+        }
+        .method {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .method h3 {
+            margin-top: 0;
+            color: #155724;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 WP Music Player - 使用指南</h1>
+        
+        <div class="highlight">
+            <strong>📦 发布准备：</strong>将 CSS 和 JS 文件上传到你的 CDN 或静态资源服务器（如 npm.webcache.cn、jsDelivr、unpkg 等）
+        </div>
+        
+        <h2>📁 文件结构</h2>
+        <ul>
+            <li><code>wp-music-player.css</code> - 播放器样式文件</li>
+            <li><code>wp-music-player.js</code> - 播放器功能文件</li>
+        </ul>
+        
+        <h2>🚀 使用方法</h2>
+        
+        <div class="method">
+            <h3>方法一：自定义元素（推荐）</h3>
+            <p>最简单的使用方式，类似你现有的 meting-js 方案：</p>
+            <div class="code-block">
+&lt;!-- 引入样式和脚本 --&gt;
+&lt;link rel="stylesheet" href="https://your-cdn.com/wp-music-player.css"&gt;
+&lt;script src="https://your-cdn.com/wp-music-player.js"&gt;&lt;/script&gt;
+
+&lt;!-- 播放器标签 --&gt;
+&lt;wp-music-player 
+    src="/wp-content/uploads/music/my-song.mp3"
+    title="我的音乐"
+    artist="艺术家名称"
+    loop="true"
+    autoplay="false"
+    volume="0.5"
+    fixed="true"
+    mini="true"&gt;
+&lt;/wp-music-player&gt;
+            </div>
+        </div>
+        
+        <div class="method">
+            <h3>方法二：JavaScript 配置</h3>
+            <p>通过 JavaScript 配置播放器：</p>
+            <div class="code-block">
+&lt;!-- 引入样式和脚本 --&gt;
+&lt;link rel="stylesheet" href="https://your-cdn.com/wp-music-player.css"&gt;
+&lt;script src="https://your-cdn.com/wp-music-player.js"&gt;&lt;/script&gt;
+
+&lt;!-- 配置脚本 --&gt;
+&lt;script data-wp-music-config&gt;
+{
+    "src": "/wp-content/uploads/music/my-song.mp3",
+    "title": "我的音乐",
+    "artist": "艺术家名称",
+    "loop": true,
+    "autoplay": false,
+    "volume": 0.5,
+    "fixed": true,
+    "mini": true
+}
+&lt;/script&gt;
+            </div>
+        </div>
+        
+        <div class="method">
+            <h3>方法三：手动初始化</h3>
+            <p>完全手动控制播放器：</p>
+            <div class="code-block">
+&lt;!-- 引入样式和脚本 --&gt;
+&lt;link rel="stylesheet" href="https://your-cdn.com/wp-music-player.css"&gt;
+&lt;script src="https://your-cdn.com/wp-music-player.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    const player = new WPMusicPlayer({
+        src: '/wp-content/uploads/music/my-song.mp3',
+        title: '我的音乐',
+        artist: '艺术家名称',
+        loop: true,
+        autoplay: false,
+        volume: 0.5,
+        fixed: true,
+        mini: true
+    });
+});
+&lt;/script&gt;
+            </div>
+        </div>
+        
+        <h2>⚙️ 参数配置</h2>
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thea
