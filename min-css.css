@@ -28,7 +28,7 @@
     left: 0 !important;
     width: 80px !important;
     height: 80px !important;
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24) !important;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
     border-radius: 20px !important;
     display: flex !important;
     align-items: center !important;
@@ -259,7 +259,7 @@
 
 /* 旋转动画 */
 .wp-music-player.playing .player-cover {
-    animation: wp-music-rotate 3s linear infinite;
+    animation: wp-music-rotate 3s linear infinite !important;
 }
 
 @keyframes wp-music-rotate {
