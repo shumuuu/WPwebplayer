@@ -35,7 +35,6 @@
     justify-content: center !important;
     transition: height 0.4s ease, border-radius 0.4s ease !important;
     z-index: 2 !important;
-    transform-origin: center center !important;
 }
 
 .wp-music-player:hover .player-cover {
@@ -261,10 +260,6 @@
 
 /* 旋转动画 */
 .wp-music-player.playing .player-cover {
-    animation: wp-music-rotate 3s linear infinite !important;
-}
-
-.wp-music-player.playing:hover .player-cover {
     animation: wp-music-rotate 3s linear infinite !important;
 }
 
