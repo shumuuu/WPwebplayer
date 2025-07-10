@@ -33,7 +33,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: all 0.4s ease !important;
+    transition: border-radius 0.4s ease, height 0.4s ease !important;
     z-index: 2 !important;
 }
 
