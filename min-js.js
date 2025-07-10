@@ -80,6 +80,13 @@
             this.muteBtn = document.getElementById('wpMuteBtn');
             this.songTitle = document.getElementById('wpSongTitle');
             this.songArtist = document.getElementById('wpSongArtist');
+            this.playerCover = this.musicPlayer.querySelector('.player-cover');
+
+            if (this.options.cover) {
+                this.playerCover.style.backgroundImage = `url('${this.options.cover}')`;
+                this.playerCover.style.backgroundSize = 'cover';
+                this.playerCover.style.backgroundPosition = 'center';
+            }
         }
         
         bindEvents() {
