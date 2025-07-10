@@ -267,45 +267,84 @@
     to { transform: rotate(360deg) !important; }
 }
 
-/* 响应式设计 - 手机端适配 */
-@media (max-width: 768px) {
-    .wp-music-player {
-        width: 60px !important;
-        height: 60px !important;
-        bottom: 15px !important;
-        left: 15px !important;
-    }
-    
-    .wp-music-player:hover {
-        width: 280px !important;
-        height: 100px !important;
-    }
-    
-    .wp-music-player .player-cover {
-        width: 60px !important;
-        height: 60px !important;
-        border-radius: 15px !important;
-    }
-    
-    .wp-music-player:hover .player-cover {
-        border-radius: 20px 0 0 20px !important;
-    }
-    
-    .wp-music-player .player-info {
-        left: 60px !important;
-        width: 220px !important;
-        height: 100px !important;
-        padding: 15px !important;
-    }
-    
-    .wp-music-player .play-btn {
-        width: 24px !important;
-        height: 24px !important;
-    }
-    
-    .wp-music-player .play-icon {
-        border-left: 6px solid #ff6b6b !important;
-        border-top: 4px solid transparent !important;
-        border-bottom: 4px solid transparent !important;
-    }
+/* 新增：展开状态下的播放器背景 */
+.wp-music-player.expanded {
+    width: 320px;
+    height: 400px;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden; /* 确保背景不超出圆角 */
+    position: relative; /* 为遮罩层定位 */
+}
+
+/* 新增：背景遮罩层 */
+.wp-music-player.expanded::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--player-cover-url);
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.7);
+    z-index: 1;
+    transform: scale(1.1); /* 避免模糊后边缘出现白边 */
+}
+
+/* 新增：内容容器，置于遮罩层之上 */
+.wp-music-player.expanded .player-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* 轻微的背景色，增强对比 */
+    color: #fff;
+}
+
+/* 展开状态下的封面样式调整 */
+.wp-music-player.expanded .player-cover {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.wp-music-player.expanded .player-info {
+    width: 100%;
+    padding: 0;
+    background: none;
+    align-items: center; /* 居中对齐 */
+}
+
+.wp-music-player.expanded .song-title {
+    font-size: 20px;
+    color: #fff;
+}
+
+.wp-music-player.expanded .song-artist {
+    font-size: 14px;
+    color: #eee;
+}
+
+.wp-music-player.expanded .progress-container {
+    width: 100%;
+}
+
+.wp-music-player.expanded .time-display,
+.wp-music-player.expanded .controls {
+    width: 100%;
+}
+
+.wp-music-player.expanded .time-display {
+    color: #eee;
+}
+
+.wp-music-player.expanded .control-btn {
+    color: #fff;
 }

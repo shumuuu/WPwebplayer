@@ -29,31 +29,36 @@
         }
         
         createPlayer() {
+            // 将封面URL设置为CSS变量，以便在CSS中用于背景
+            const playerStyle = this.options.cover ? `style="--player-cover-url: url('${this.options.cover}')"` : '';
+
             // 创建播放器HTML结构
             const playerHTML = `
-                <div class="wp-music-player" id="wpMusicPlayer">
-                    <div class="player-cover">
-                        <div class="play-btn" id="wpPlayBtn">
-                            <div class="play-icon" id="wpPlayIcon"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="player-info">
-                        <div class="song-title" id="wpSongTitle">${this.options.title}</div>
-                        <div class="song-artist" id="wpSongArtist">${this.options.artist}</div>
-                        
-                        <div class="progress-container" id="wpProgressContainer">
-                            <div class="progress-bar" id="wpProgressBar"></div>
+                <div class="wp-music-player" id="wpMusicPlayer" ${playerStyle}>
+                    <div class="player-content">
+                        <div class="player-cover">
+                            <div class="play-btn" id="wpPlayBtn">
+                                <div class="play-icon" id="wpPlayIcon"></div>
+                            </div>
                         </div>
                         
-                        <div class="time-display">
-                            <span id="wpCurrentTime">0:00</span>
-                            <span id="wpTotalTime">0:00</span>
-                        </div>
-                        
-                        <div class="controls">
-                            <button class="control-btn" id="wpMuteBtn" title="静音">🔊</button>
-                            <input type="range" class="volume-slider" id="wpVolumeSlider" min="0" max="100" value="${this.options.volume * 100}">
+                        <div class="player-info">
+                            <div class="song-title" id="wpSongTitle">${this.options.title}</div>
+                            <div class="song-artist" id="wpSongArtist">${this.options.artist}</div>
+                            
+                            <div class="progress-container" id="wpProgressContainer">
+                                <div class="progress-bar" id="wpProgressBar"></div>
+                            </div>
+                            
+                            <div class="time-display">
+                                <span id="wpCurrentTime">0:00</span>
+                                <span id="wpTotalTime">0:00</span>
+                            </div>
+                            
+                            <div class="controls">
+                                <button class="control-btn" id="wpMuteBtn" title="静音">🔊</button>
+                                <input type="range" class="volume-slider" id="wpVolumeSlider" min="0" max="100" value="${this.options.volume * 100}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -95,6 +100,14 @@
                 console.log('音乐播放器元素未找到');
                 return;
             }
+
+            // 新增：播放器展开/收起事件
+            this.musicPlayer.addEventListener('click', (e) => {
+                // 检查点击的是否是播放器背景区域，而不是按钮或进度条等
+                if (e.target === this.musicPlayer || e.target.classList.contains('player-content')) {
+                    this.musicPlayer.classList.toggle('expanded');
+                }
+            });
             
             // 播放/暂停按钮事件
             this.playBtn.addEventListener('click', (e) => {
@@ -283,6 +296,16 @@
         
         setSrc(src) {
             this.audio.src = src;
+        }
+
+        setCover(coverUrl) {
+            this.options.cover = coverUrl;
+            if (this.musicPlayer) {
+                this.musicPlayer.style.setProperty('--player-cover-url', `url('${coverUrl}')`);
+            }
+            if (this.playerCover) {
+                this.playerCover.style.backgroundImage = `url('${coverUrl}')`;
+            }
         }
         
         destroy() {
