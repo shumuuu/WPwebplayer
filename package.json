@@ -1,11 +1,11 @@
 {
-  "name": "wp-webplayer-test",
+  "name": "wpwebplayer",
   "version": "1.0.0",
-  "main": "min-js.js",
+  "description": "https://github.com/yunsen2025/WPwebplayer",
+  "main": "/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "Yunsen",
+  "license": "ISC"
 }
