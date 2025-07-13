@@ -1,7 +1,7 @@
 # WPWebPlayer（html网站播放组件）  
-一款简单，简洁，轻量的网站音乐播放器  [示例界面](https://wpwebplayer.112601.xyz/)
-![示例](https://imgbed.yunsen2025.top/file/1752422083916.png)  
-[项目主页文章（博客）](https://www.yunsen2025.top/023-wpmusicplayer) | [示例界面](https://wpwebplayer.112601.xyz/) | [NPM包（前端资源）](https://www.jsdelivr.com/package/npm/wpwebplayer?tab=files)
+一款简单，简洁，轻量的网站音乐播放器  [体验界面](https://wpwebplayer.112601.xyz/)
+![示例](https://imgbed.112601.xyz/file/1752422083916.png)  
+[项目主页文章（博客）](https://www.yunsen2025.top/023-wpmusicplayer) | [体验界面](https://wpwebplayer.112601.xyz/) | [NPM包（前端资源）](https://www.jsdelivr.com/package/npm/wpwebplayer?tab=files)
 > [!NOTE]
 >
 > **README仅展示基础玩法，推荐前往上方项目文章查看更多**
