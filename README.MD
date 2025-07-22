@@ -15,8 +15,8 @@
 # 使用方式：  
 1. 在`<head>`标签中引入css与js文件  
 ```
-<link rel="stylesheet" href="https://npm.webcache.cn/wpwebplayer@1.0.1/min-css.css">     
-<script src="https://npm.webcache.cn/wpwebplayer@1.0.1/min-js.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wpwebplayer@1.1.5/min-css.css">     
+<script src="https://cdn.jsdelivr.net/npm/wpwebplayer@1.1.5/min-js.js"></script>
 ```
 2. 在`<body>`中使用`<wp-music-player>`标签  
 ```
