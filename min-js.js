@@ -20,11 +20,29 @@
                 mini: options.mini !== false,
                 theme: options.theme || '#ff6b6b'
             };
-            
+
             this.isPlaying = false;
             this.isDragging = false;
-            
+
             this.createPlayer();
+
+            // 恢复播放状态
+            try {
+                const state = JSON.parse(localStorage.getItem('wpMusicPlayerState'));
+                console.log('[WPMusicPlayer] 恢复状态:', state, '当前src:', this.options.src);
+                if (state && state.src === this.options.src) {
+                    this.audio.currentTime = state.currentTime || 0;
+                    this.shouldAutoPlay = !!state.isPlaying;
+                    console.log('[WPMusicPlayer] 恢复进度:', this.audio.currentTime, 'shouldAutoPlay:', this.shouldAutoPlay);
+                } else {
+                    this.shouldAutoPlay = !!this.options.autoplay;
+                    console.log('[WPMusicPlayer] 没有可恢复状态，autoplay:', this.shouldAutoPlay);
+                }
+            } catch (e) {
+                this.shouldAutoPlay = !!this.options.autoplay;
+                console.log('[WPMusicPlayer] 状态恢复异常，autoplay:', this.shouldAutoPlay, e);
+            }
+
             this.bindEvents();
         }
         
@@ -176,9 +194,10 @@
             this.loadVolume();
             
             // 自动播放（需要用户交互）
-            if (this.options.autoplay) {
-                // 延迟一点时间再自动播放，确保页面加载完成
+            console.log('[WPMusicPlayer] bindEvents shouldAutoPlay:', this.shouldAutoPlay);
+            if (this.shouldAutoPlay) {
                 setTimeout(() => {
+                    console.log('[WPMusicPlayer] 执行自动播放');
                     this.play();
                 }, 500);
             }
@@ -286,11 +305,19 @@
         }
         
         destroy() {
+            if (this.audio) {
+                // 保存播放状态和进度，统一用 this.options.src
+                try {
+                    localStorage.setItem('wpMusicPlayerState', JSON.stringify({
+                        src: this.options.src, // 这里改为 this.options.src
+                        currentTime: this.audio.currentTime,
+                        isPlaying: this.isPlaying
+                    }));
+                } catch (e) {}
+                this.audio.remove();
+            }
             if (this.musicPlayer) {
                 this.musicPlayer.remove();
-            }
-            if (this.audio) {
-                this.audio.remove();
             }
         }
     }
