@@ -215,6 +215,14 @@
     border: none !important;
 }
 
+.wp-music-player .volume-display {
+    font-size: 12px !important;
+    color: #666 !important;
+    min-width: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
 /* 波浪动画 */
 .wp-music-player .wave-animation {
     position: absolute !important;

@@ -72,6 +72,7 @@
                         <div class="controls">
                             <button class="control-btn" id="wpMuteBtn" title="静音">🔊</button>
                             <input type="range" class="volume-slider" id="wpVolumeSlider" min="0" max="100" value="${this.options.volume * 100}">
+                            <span class="volume-display" id="wpVolumeDisplay">${Math.round(this.options.volume * 100)}</span>
                         </div>
                     </div>
                 </div>
@@ -95,6 +96,7 @@
             this.currentTime = document.getElementById('wpCurrentTime');
             this.totalTime = document.getElementById('wpTotalTime');
             this.volumeSlider = document.getElementById('wpVolumeSlider');
+            this.volumeDisplay = document.getElementById('wpVolumeDisplay');
             this.muteBtn = document.getElementById('wpMuteBtn');
             this.songTitle = document.getElementById('wpSongTitle');
             this.songArtist = document.getElementById('wpSongArtist');
@@ -179,6 +181,7 @@
             this.volumeSlider.addEventListener('input', (e) => {
                 const volume = e.target.value / 100;
                 this.audio.volume = volume;
+                this.volumeDisplay.textContent = Math.round(volume * 100);
                 this.saveVolume(volume);
             });
             
@@ -285,6 +288,7 @@
                     const volume = parseFloat(savedVolume);
                     this.audio.volume = volume;
                     this.volumeSlider.value = volume * 100;
+                    this.volumeDisplay.textContent = Math.round(volume * 100);
                 }
             } catch (e) {
                 // localStorage不可用
