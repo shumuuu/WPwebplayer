@@ -18,7 +18,7 @@
 
 .wp-music-player:hover {
     width: 320px !important;
-    height: 140px !important;
+    height: 130px !important;
     border-radius: 25px !important;
 }
 
@@ -99,7 +99,7 @@
     top: 0 !important;
     left: 80px !important;
     width: 240px !important;
-    height: 140px !important;
+    height: 130px !important;
     padding: 15px !important;
     opacity: 0 !important;
     transition: all 0.4s ease !important;
